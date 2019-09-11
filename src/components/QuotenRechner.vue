@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="form-calculate">
-                <img
-                    class  = "logo mb-4"
-                    src    = "../assets/rechner.png"
-                    alt    = "Rechner Logo">
+            <img
+                    class="logo mb-4"
+                    src="../assets/rechner.png"
+                    alt="Rechner Logo">
 
             <div class="input-group input-group-sm mb-3">
                 <div class="input-group-prepend">
@@ -39,21 +39,21 @@
             </div>
 
             <div class="fieldContainer">
-                <div 
-                        class = "alert"
-                 v-bind:class = "{ 'alert-success': ergebnis > 0, 'alert-secondary': ergebnis == 0}"
-                        role  = "alert">
+                <div
+                        class="alert"
+                        v-bind:class="{ 'alert-success': ergebnis > 0, 'alert-secondary': ergebnis == 0}"
+                        role="alert">
                     Ergebnis: <span>{{ ergebnis }}%</span>
                 </div>
             </div>
 
 
-        <div class="heart mt-5 animated infinite pulse">
-            <img 
-            src   = "../assets/herz.png"
-            alt   = "Herz"
-            class = "heartImg"></div>
-            <p class="mt-3 mb-3 text-muted small"> 
+            <div class="heart mt-5 animated infinite pulse">
+                <img
+                        src="../assets/herz.png"
+                        alt="Herz"
+                        class="heartImg"></div>
+            <p class="mt-3 mb-3 text-muted small">
                 &copy; 2019 Michi für Chrischi
             </p>
         </div>
@@ -86,11 +86,9 @@
              * Berechnet wieviele Mitarbeiter benachteiligt sind
              */
             calculate() {
-                if (this.beruecksichtigt > 0 && this.benachteiligte > 0) {
-                    this.ergebnis = this.round(this.benachteiligte / this.beruecksichtigt * 100);
-                } else {
-                    this.ergebnis = 0;
-                }
+                this.ergebnis = this.beruecksichtigt > 0 && this.benachteiligte > 0
+                    ? this.round(this.benachteiligte / this.beruecksichtigt * 100)
+                    : 0;
             },
 
             /**
@@ -131,10 +129,15 @@
         width: 50px;
     }
 
+    .heart {
+        font-size: 35px;
+        display: inline-block;
+    }
+
     .heartImg {
         width: 35px;
     }
-    
+
     .fieldContainer {
         margin: 10px 0;
     }
@@ -145,11 +148,6 @@
 
     .small {
         font-size: 12px;
-    }
-
-    .heart {
-        font-size: 35px; 
-        display: inline-block;
     }
 
     .mt-3 {
@@ -174,9 +172,5 @@
         height: auto;
         padding: 10px;
         font-size: 16px;
-    }
-
-    .form-calculate .form-control:focus {
-        z-index: 2;
     }
 </style>
