@@ -1,4 +1,5 @@
 # Schwerbehinderten-Quote-Rechner
+This is a little fun Vue project that helps my girlfriend with her work.
 
 ## Project setup
 ```
