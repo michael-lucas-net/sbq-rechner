@@ -1,13 +1,10 @@
 <template>
     <div>
-        <div class="form-signin">
-            <img
-                    class  = "mb-4"
-                    src    = "https://images.vexels.com/media/users/3/137310/isolated/preview/cf5a1b0cf2ebd6f2d7f707ff9317495e-stroke-heart-logo-by-vexels.png"
-                    alt    = ""
-                    width  = "72"
-                    height = "72">
-            <h1 class="h3 mb-3 font-weight-normal">Quoten Rechner</h1>
+        <div class="form-calculate">
+                <img
+                    class  = "logo mb-4"
+                    src    = "../assets/rechner.png"
+                    alt    = "">
 
             <div class="input-group input-group-sm mb-3">
                 <div class="input-group-prepend">
@@ -51,8 +48,12 @@
             </div>
 
 
-        <div style="font-size: 35px; display: innline-block;" class="mt-5 animated infinite pulse">♥</div> 
-            <p class="mb-3 text-muted small"> 
+        <div class="heart mt-5 animated infinite pulse">
+            <img 
+            src   = "../assets/herz.png"
+            alt   = "Herz"
+            class = "heartImg"></div>
+            <p class="mt-3 mb-3 text-muted small"> 
                 &copy; 2019 Michi für Chrischi
             </p>
         </div>
@@ -93,7 +94,7 @@
             },
 
             /**
-             * Berücksichtigt werden Alle Mitarbeiter abzüglich Azubis und Geringfügigen Mitarbeitern
+             * Berücksichtigt werden alle Mitarbeiter abzüglich Azubis und geringfügige Mitarbeitern
              */
             changeBeruecksichtigt() {
                 this.beruecksichtigt = Number(this.mitarbeiter) - (Number(this.azubis) + Number(this.geringis));
@@ -103,7 +104,9 @@
     };
 </script>
 
-<style scoped="scoped">
+<style>
+
+    /* Allgemein */
     body,
     html {
         height: 100%;
@@ -124,18 +127,48 @@
         background-color: #f5f5f5;
     }
 
+    .logo {
+        width: 50px;
+    }
+
+    .heartImg {
+        width: 35px;
+    }
+    
     .fieldContainer {
         margin: 10px 0;
     }
 
-    .form-signin {
+    .input-group-prepend {
+        width: 60%;
+    }
+
+    .small {
+        font-size: 12px;
+    }
+
+    .heart {
+        font-size: 35px; 
+        display: inline-block;
+    }
+
+    .mt-3 {
+        margin-top: 3%;
+    }
+
+    /* Form */
+    .form-calculate,
+    .input-group-text {
         width: 100%;
+    }
+
+    .form-calculate {
         max-width: 330px;
         padding: 15px;
         margin: 0 auto;
     }
 
-    .form-signin .form-control {
+    .form-calculate .form-control {
         position: relative;
         box-sizing: border-box;
         height: auto;
@@ -143,19 +176,7 @@
         font-size: 16px;
     }
 
-    .form-signin .form-control:focus {
+    .form-calculate .form-control:focus {
         z-index: 2;
-    }
-
-    .input-group-prepend {
-        width: 60%;
-    }
-
-    .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group > .input-group-append:last-child > .input-group-text:not(:last-child), .input-group > .input-group-append:not(:last-child) > .btn, .input-group > .input-group-append:not(:last-child) > .input-group-text, .input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .input-group-text {
-        width: 100%;
-    }
-
-    .small {
-        font-size: 12px;
     }
 </style>
