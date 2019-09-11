@@ -4,7 +4,7 @@
                 <img
                     class  = "logo mb-4"
                     src    = "../assets/rechner.png"
-                    alt    = "">
+                    alt    = "Rechner Logo">
 
             <div class="input-group input-group-sm mb-3">
                 <div class="input-group-prepend">
