@@ -42,13 +42,19 @@
             </div>
 
             <div class="fieldContainer">
-                <div class="alert alert-info" role="alert">
+                <div 
+                        class = "alert"
+                 v-bind:class = "{ 'alert-success': ergebnis > 0, 'alert-secondary': ergebnis == 0}"
+                        role  = "alert">
                     Ergebnis: <span>{{ ergebnis }}%</span>
                 </div>
             </div>
 
-            <p class="mt-5 mb-3 text-muted">&copy; 2019 Michi für Chrischi ♥ </p>
 
+        <div style="font-size: 35px; display: innline-block;" class="mt-5 animated infinite pulse">♥</div> 
+            <p class="mb-3 text-muted small"> 
+                &copy; 2019 Michi für Chrischi
+            </p>
         </div>
     </div>
 </template>
@@ -149,4 +155,7 @@
         width: 100%;
     }
 
+    .small {
+        font-size: 12px;
+    }
 </style>
