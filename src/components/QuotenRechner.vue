@@ -10,7 +10,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Mitarbeiter</span>
                 </div>
-                <input type="number" class="form-control" v-model="mitarbeiter" @change="changeBeruecksichtigt"
+                <input type="number" min="1" class="form-control" v-model="mitarbeiter" @change="changeBeruecksichtigt"
                        placeholder="Mitarbeiter" required="required">
             </div>
 
@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Auszubildene</span>
                 </div>
-                <input type="number" class="form-control" v-model="azubis" @change="changeBeruecksichtigt"
+                <input type="number" min="0" class="form-control" v-model="azubis" @change="changeBeruecksichtigt"
                        placeholder="Mitarbeiter" required="required">
             </div>
 
@@ -26,7 +26,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Geringfügige Mitarbeiter</span>
                 </div>
-                <input type="number" class="form-control" v-model="geringis" @change="changeBeruecksichtigt"
+                <input type="number" min="0" class="form-control" v-model="geringis" @change="changeBeruecksichtigt"
                        placeholder="Mitarbeiter" required="required">
             </div>
 
@@ -34,7 +34,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Benachteiligte Mitarbeiter</span>
                 </div>
-                <input type="number" class="form-control" v-model="benachteiligte" @change="changeBeruecksichtigt"
+                <input type="number" min="0" class="form-control" v-model="benachteiligte" @change="changeBeruecksichtigt"
                        placeholder="Mitarbeiter" required="required">
             </div>
 
@@ -43,7 +43,10 @@
                         class="alert"
                         v-bind:class="{ 'alert-success': ergebnis > 0, 'alert-secondary': ergebnis == 0}"
                         role="alert">
-                    Ergebnis: <span>{{ ergebnis }}%</span>
+                        <small>
+                        Anteil benachteiligter Mitarbeiter: 
+                        <span>{{ ergebnis }}%</span>
+                    </small>
                 </div>
             </div>
 
@@ -65,7 +68,7 @@
         name: "Quotenrechner",
         data() {
             return {
-                mitarbeiter: 0,
+                mitarbeiter: 1,
                 azubis: 0,
                 geringis: 0,
                 benachteiligte: 0,
