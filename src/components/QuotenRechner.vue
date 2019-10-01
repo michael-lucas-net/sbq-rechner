@@ -21,6 +21,7 @@
                 <input type="number" min="0" class="form-control" v-model="azubis" @change="changeBeruecksichtigt"
                        placeholder="Mitarbeiter" required="required">
             </div>
+            <Ergebnis :result="result"/>
 
             <div class="input-group input-group-sm mb-3">
                 <div class="input-group-prepend">
@@ -99,12 +100,15 @@ import Bottom from './bottom';
             }
         }
     };
+	import Bottom from './bottom';
 	import Ergebnis from './ergebnis';
 	export default {
+		name: "Quotenrechner",
 		components: {
 			Bottom,
 			Field,
 			Ergebnis
+		},
 		data() {
 			return {
 				mitarbeiter: 1,
