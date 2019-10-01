@@ -51,6 +51,7 @@
             </div>
 
             <Bottom />     
+            <Bottom/>
         </div>
     </div>
 </template>
@@ -98,6 +99,49 @@ import Bottom from './bottom';
             }
         }
     };
+	import Ergebnis from './ergebnis';
+	export default {
+		components: {
+			Bottom,
+			Field,
+			Ergebnis
+		data() {
+			return {
+				mitarbeiter: 1,
+				azubis: 0,
+				geringis: 0,
+				benachteiligte: 0,
+				beruecksichtigt: 0,
+				result: 0
+			};
+		},
+		methods: {
+			/**
+			 * Rundet auf Zweikommastellen
+			 */
+			round(number) {
+				return Number(number.toFixed(2));
+			}
+			,
+
+			/**
+			 * Berechnet wieviele Mitarbeiter benachteiligt sind
+			 */
+			calculate() {
+				this.result = this.beruecksichtigt > 0 && this.benachteiligte > 0
+					? this.round(this.benachteiligte / this.beruecksichtigt * 100)
+					: 0;
+			},
+
+			/**
+			 * Berücksichtigt werden alle Mitarbeiter abzüglich Azubis und geringfügige Mitarbeitern
+			 */
+			changeBeruecksichtigt() {
+				this.beruecksichtigt = Number(this.mitarbeiter) - (Number(this.azubis) + Number(this.geringis));
+				this.calculate();
+			}
+		}
+	};
 </script>
 
 <style>
@@ -131,21 +175,8 @@ import Bottom from './bottom';
         margin: 10px 0;
     }
 
-    .input-group-prepend {
-        width: 60%;
-    }
-
-    .small {
-        font-size: 12px;
-    }
-
-    .mt-3 {
-        margin-top: 3%;
-    }
-
     /* Form */
-    .form-calculate,
-    .input-group-text {
+    .form-calculate {
         width: 100%;
     }
 
@@ -155,7 +186,7 @@ import Bottom from './bottom';
         margin: 0 auto;
     }
 
-    .form-calculate .form-control {
+    .form-calculate {
         position: relative;
         box-sizing: border-box;
         height: auto;
