@@ -1,179 +1,168 @@
 <template>
-    <div>
-        <div class="form-calculate">
-            <img
-                    class="logo mb-4"
-                    src="../assets/rechner.png"
-                    alt="Rechner Logo">
+	<div>
+		<div class="form-calculate">
 
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Mitarbeiter</span>
-                </div>
-                <input type="number" min="1" class="form-control" v-model="mitarbeiter" @change="changeBeruecksichtigt"
-                       placeholder="Mitarbeiter" required="required">
-            </div>
+			<Logo/>
 
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Auszubildene</span>
-                </div>
-                <input type="number" min="0" class="form-control" v-model="azubis" @change="changeBeruecksichtigt"
-                       placeholder="Mitarbeiter" required="required">
-            </div>
+			<div class="input-group input-group-sm mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Mitarbeiter</span>
+				</div>
+				<input type        = "number"
+				       min         = "1"
+				       class       = "form-control"
+				       v-model     = "mitarbeiter"
+				       @change     = "changeBeruecksichtigt"
+				       placeholder = "Mitarbeiter"
+				       required    = "required">
+			</div>
 
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Geringfügige Mitarbeiter</span>
-                </div>
-                <input type="number" min="0" class="form-control" v-model="geringis" @change="changeBeruecksichtigt"
-                       placeholder="Mitarbeiter" required="required">
-            </div>
+			<div class="input-group input-group-sm mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Auszubildene</span>
+				</div>
+				<input type        = "number"
+				       min         = "0"
+				       class       = "form-control"
+				       v-model     = "azubis"
+				       @change     = "changeBeruecksichtigt"
+				       placeholder = "Mitarbeiter"
+				       required    = "required">
+			</div>
 
-            <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Benachteiligte Mitarbeiter</span>
-                </div>
-                <input type="number" min="0" class="form-control" v-model="benachteiligte" @change="changeBeruecksichtigt"
-                       placeholder="Mitarbeiter" required="required">
-            </div>
+			<div class="input-group input-group-sm mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Geringfügige Mitarbeiter</span>
+				</div>
+				<input
+						type        = "number"
+						min         = "0"
+						class       = "form-control"
+						v-model     = "geringis"
+						@change     = "changeBeruecksichtigt"
+						placeholder = "Mitarbeiter"
+						required    = "required">
+			</div>
 
-            <div class="fieldContainer">
-                <div
-                        class="alert"
-                        v-bind:class="{ 'alert-success': ergebnis > 0, 'alert-secondary': ergebnis == 0}"
-                        role="alert">
-                        <small>
-                        Anteil benachteiligter Mitarbeiter: 
-                        <span>{{ ergebnis }}%</span>
-                    </small>
-                </div>
-            </div>
+			<div class="input-group input-group-sm mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Benachteiligte Mitarbeiter</span>
+				</div>
+				<input
+						type        = "number"
+						min         = "0"
+						class       = "form-control"
+						v-model     = "benachteiligte"
+						@change     = "changeBeruecksichtigt"
+						placeholder = "Mitarbeiter"
+						required    = "required">
+			</div>
 
+			<Ergebnis :result="result"/>
+			<Bottom/>
 
-            <div class="heart mt-5 animated infinite pulse">
-                <img
-                        src="../assets/herz.png"
-                        alt="Herz"
-                        class="heartImg"></div>
-            <p class="mt-3 mb-3 text-muted small">
-                &copy; 2019 Michi für Chrischi
-            </p>
-        </div>
-    </div>
+		</div>
+	</div>
 </template>
 
 <script>
-    export default {
-        name: "Quotenrechner",
-        data() {
-            return {
-                mitarbeiter: 1,
-                azubis: 0,
-                geringis: 0,
-                benachteiligte: 0,
-                beruecksichtigt: 0,
-                ergebnis: 0
-            };
-        },
-        methods: {
+import Logo from './logo';
+	import Bottom from './bottom';
+	import Ergebnis from './ergebnis';
 
-            /**
-             * Rundet auf Zweikommastellen
-             */
-            round(number) {
-                return Number(number.toFixed(2));
-            },
+	export default {
+		name: "Quotenrechner",
+		components: {
+            Logo,
+			Bottom,
+			Ergebnis
+		},
+		data() {
+			return {
+				mitarbeiter: 1,
+				azubis: 0,
+				geringis: 0,
+				benachteiligte: 0,
+				beruecksichtigt: 0,
+				result: 0
+			};
+		},
+		methods: {
+			/**
+			 * Rundet auf Zweikommastellen
+			 */
+			round(number) {
+				return Number(number.toFixed(2));
+			},
 
-            /**
-             * Berechnet wieviele Mitarbeiter benachteiligt sind
-             */
-            calculate() {
-                this.ergebnis = this.beruecksichtigt > 0 && this.benachteiligte > 0
-                    ? this.round(this.benachteiligte / this.beruecksichtigt * 100)
-                    : 0;
-            },
+			/**
+			 * Berechnet wieviele Mitarbeiter benachteiligt sind
+			 */
+			calculate() {
+				this.result = this.beruecksichtigt > 0 && this.benachteiligte > 0
+					? this.round(this.benachteiligte / this.beruecksichtigt * 100)
+					: 0;
+			},
 
-            /**
-             * Berücksichtigt werden alle Mitarbeiter abzüglich Azubis und geringfügige Mitarbeitern
-             */
-            changeBeruecksichtigt() {
-                this.beruecksichtigt = Number(this.mitarbeiter) - (Number(this.azubis) + Number(this.geringis));
-                this.calculate();
-            }
-        }
-    };
+			/**
+			 * Berücksichtigt werden alle Mitarbeiter abzüglich Azubis und geringfügige Mitarbeitern
+			 */
+			changeBeruecksichtigt() {
+				this.beruecksichtigt = Number(this.mitarbeiter) - (Number(this.azubis) + Number(this.geringis));
+				this.calculate();
+			}
+		}
+	};
 </script>
 
 <style>
 
-    /* Allgemein */
-    body,
-    html {
-        height: 100%;
-    }
+	/* Allgemein */
+	body,
+	html {
+		height: 100%;
+	}
 
-    body {
-        display: -ms-flexbox;
-        display: -webkit-box;
-        display: flex;
-        -ms-flex-align: center;
-        -ms-flex-pack: center;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        justify-content: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-    }
+	body {
+		display: -ms-flexbox;
+		display: -webkit-box;
+		display: flex;
+		-ms-flex-align: center;
+		-ms-flex-pack: center;
+		-webkit-box-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		justify-content: center;
+		padding-top: 40px;
+		padding-bottom: 40px;
+		background-color: #f5f5f5;
+	}
 
-    .logo {
-        width: 50px;
-    }
+	.fieldContainer {
+		margin: 10px 0;
+	}
 
-    .heart {
-        font-size: 35px;
-        display: inline-block;
-    }
+	/* Form */
+	.form-calculate,
+	.input-group-text {
+		width: 100%;
+	}
 
-    .heartImg {
-        width: 35px;
-    }
+	.form-calculate {
+		max-width: 330px;
+		padding: 15px;
+		margin: 0 auto;
+	}
 
-    .fieldContainer {
-        margin: 10px 0;
-    }
+	.form-calculate {
+		position: relative;
+		box-sizing: border-box;
+		height: auto;
+		padding: 10px;
+		font-size: 16px;
+	}
 
-    .input-group-prepend {
-        width: 60%;
-    }
-
-    .small {
-        font-size: 12px;
-    }
-
-    .mt-3 {
-        margin-top: 3%;
-    }
-
-    /* Form */
-    .form-calculate,
-    .input-group-text {
-        width: 100%;
-    }
-
-    .form-calculate {
-        max-width: 330px;
-        padding: 15px;
-        margin: 0 auto;
-    }
-
-    .form-calculate .form-control {
-        position: relative;
-        box-sizing: border-box;
-        height: auto;
-        padding: 10px;
-        font-size: 16px;
-    }
+	.input-group-prepend {
+		width: 60%;
+	}
 </style>
