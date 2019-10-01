@@ -50,22 +50,18 @@
                 </div>
             </div>
 
-
-            <div class="heart mt-5 animated infinite pulse">
-                <img
-                        src="../assets/herz.png"
-                        alt="Herz"
-                        class="heartImg"></div>
-            <p class="mt-3 mb-3 text-muted small">
-                &copy; 2019 Michi für Chrischi
-            </p>
+            <Bottom />     
         </div>
     </div>
 </template>
 
 <script>
+import Bottom from './bottom';
     export default {
         name: "Quotenrechner",
+        components: {
+            Bottom
+        },
         data() {
             return {
                 mitarbeiter: 1,
@@ -77,7 +73,6 @@
             };
         },
         methods: {
-
             /**
              * Rundet auf Zweikommastellen
              */
@@ -130,15 +125,6 @@
 
     .logo {
         width: 50px;
-    }
-
-    .heart {
-        font-size: 35px;
-        display: inline-block;
-    }
-
-    .heartImg {
-        width: 35px;
     }
 
     .fieldContainer {
