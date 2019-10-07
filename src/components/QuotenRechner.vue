@@ -66,28 +66,28 @@
 </template>
 
 <script>
-import Logo from './logo';
-	import Bottom from './bottom';
-	import Ergebnis from './ergebnis';
+    import Logo from "./logo";
+    import Bottom from "./copyright";
+    import Ergebnis from "./ergebnis";
 
-	export default {
-		name: "Quotenrechner",
-		components: {
+    export default {
+        name: "Quotenrechner",
+        components: {
             Logo,
-			Bottom,
-			Ergebnis
-		},
-		data() {
-			return {
-				mitarbeiter: 1,
-				azubis: 0,
-				geringis: 0,
-				benachteiligte: 0,
-				beruecksichtigt: 0,
-				result: 0
-			};
-		},
-		methods: {
+            Bottom,
+            Ergebnis
+        },
+        data() {
+            return {
+                mitarbeiter: 1,
+                azubis: 0,
+                geringis: 0,
+                benachteiligte: 0,
+                beruecksichtigt: 0,
+                result: 0
+            };
+        },
+        methods: {
 			/**
 			 * Rundet auf Zweikommastellen
 			 */

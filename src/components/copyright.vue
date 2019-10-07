@@ -17,10 +17,10 @@
 </template>
 
 <script lang="js">
-	import Heart from './heart';
+	import Heart from './herz';
 
 	export default {
-		name: 'bottom',
+		name: 'copyright',
 		components: {
 			Heart
 		}

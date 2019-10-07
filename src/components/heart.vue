@@ -2,10 +2,7 @@
 
     <section class="heart">
         <div class="heart mt-5 animated infinite pulse">
-            <img
-                    src="../assets/herz.png"
-                    alt="Herz"
-                    class="heartImg"/>
+            <img src="../assets/herz.png" alt="Herz" class="heartImg"/>
         </div>
     </section>
 
