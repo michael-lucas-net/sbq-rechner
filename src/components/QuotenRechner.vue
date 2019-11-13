@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-calculate">
-      <Logo />
+      <img class="logo mb-4" src="../assets/rechner.png" alt="Rechner Logo" />
 
       <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
@@ -70,14 +70,12 @@
 </template>
 
 <script>
-import Logo from "./logo";
-import Bottom from "./copyright";
+import Bottom from "./bottom";
 import Ergebnis from "./ergebnis";
 
 export default {
   name: "Quotenrechner",
   components: {
-    Logo,
     Bottom,
     Ergebnis
   },
@@ -142,6 +140,10 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+}
+
+.logo {
+  width: 50px;
 }
 
 .fieldContainer {
