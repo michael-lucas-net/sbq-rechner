@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <div class="herz mt-5 animated infinite pulse">
-      <img src="../assets/herz.png" alt="Herz" class="herzImg" />
+      <img src="../assets/heart.png" alt="Heart" class="heartImage" />
     </div>
     <section class="bottom">
       <p class="mt-3 mb-3 text-muted small">
@@ -17,10 +17,10 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      year: new Date().getFullYear()
-    };
+  computed: {
+    year: function() {
+      return new Date().getFullYear();
+    }
   }
 };
 </script>
@@ -35,7 +35,7 @@ a {
   display: inline-block;
 }
 
-.herzImg {
+.heartImage {
   width: 35px;
 }
 </style>
