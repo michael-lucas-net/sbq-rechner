@@ -5,7 +5,7 @@
     </div>
     <section class="bottom">
       <p class="mt-3 mb-3 text-muted small">
-        &copy; 2019
+        &copy; 2019-{{ year }}
         <a href="https://github.com/michael-lucas-net/" target="_blank">
           Michi
         </a>
@@ -14,6 +14,16 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      year: new Date().getFullYear()
+    };
+  }
+};
+</script>
 
 <style scoped>
 a {
