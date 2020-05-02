@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Quotenrechner />
+    <QuotaCalculator />
   </div>
 </template>
 
 <script>
-import Quotenrechner from "./components/QuotenRechner.vue";
+import QuotaCalculator from "./components/quotaCalculator.vue";
 
 export default {
   name: "app",
   components: {
-    Quotenrechner
+    QuotaCalculator: QuotaCalculator
   }
 };
 </script>

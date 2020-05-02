@@ -15,8 +15,8 @@
           type="number"
           min="1"
           class="form-control"
-          v-model="mitarbeiter"
-          @change="changeBeruecksichtigt"
+          v-model="employees"
+          @change="changeConsidered"
           placeholder="Mitarbeiter"
           required="required"
         />
@@ -30,8 +30,8 @@
           type="number"
           min="0"
           class="form-control"
-          v-model="azubis"
-          @change="changeBeruecksichtigt"
+          v-model="trainees"
+          @change="changeConsidered"
           placeholder="Mitarbeiter"
           required="required"
         />
@@ -45,8 +45,8 @@
           type="number"
           min="0"
           class="form-control"
-          v-model="geringis"
-          @change="changeBeruecksichtigt"
+          v-model="minors"
+          @change="changeConsidered"
           placeholder="Mitarbeiter"
           required="required"
         />
@@ -60,8 +60,8 @@
           type="number"
           min="0"
           class="form-control"
-          v-model="benachteiligte"
-          @change="changeBeruecksichtigt"
+          v-model="disadvantaged"
+          @change="changeConsidered"
           placeholder="Mitarbeiter"
           required="required"
         />
@@ -85,11 +85,11 @@ export default {
   },
   data() {
     return {
-      mitarbeiter: 1,
-      azubis: 0,
-      geringis: 0,
-      benachteiligte: 0,
-      beruecksichtigt: 0,
+      employees: 1,
+      trainees: 0,
+      minors: 0,
+      disadvantaged: 0,
+      considered: 0,
       result: 0
     };
   },
@@ -106,18 +106,17 @@ export default {
      */
     calculate() {
       this.result =
-        this.beruecksichtigt > 0 && this.benachteiligte > 0
-          ? this.round((this.benachteiligte / this.beruecksichtigt) * 100)
+        this.considered > 0 && this.disadvantaged > 0
+          ? this.round((this.disadvantaged / this.considered) * 100)
           : 0;
     },
 
     /**
      * Berücksichtigt werden alle Mitarbeiter abzüglich Azubis und geringfügige Mitarbeitern
      */
-    changeBeruecksichtigt() {
-      this.beruecksichtigt =
-        Number(this.mitarbeiter) -
-        (Number(this.azubis) + Number(this.geringis));
+    changeConsidered() {
+      this.considered =
+        Number(this.employees) - (Number(this.trainees) + Number(this.minors));
       this.calculate();
     }
   }
@@ -148,10 +147,6 @@ body {
 
 .logo {
   width: 50px;
-}
-
-.fieldContainer {
-  margin: 10px 0;
 }
 
 /* Form */

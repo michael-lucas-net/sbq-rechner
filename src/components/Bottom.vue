@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <div class="herz mt-5 animated infinite pulse">
+    <div class="heart mt-5 animated infinite pulse">
       <img src="../assets/heart.png" alt="Heart" class="heartImage" />
     </div>
     <section class="bottom">
@@ -30,7 +30,7 @@ a {
   font-weight: bold;
   color: #333;
 }
-.herz {
+.heart {
   font-size: 35px;
   display: inline-block;
 }

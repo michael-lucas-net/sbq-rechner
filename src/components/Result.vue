@@ -20,7 +20,6 @@
 
 <script lang="js">
 export default {
-    name: "ergebnis",
     props: ["result"],
 };
 </script>
