@@ -7,67 +7,9 @@
         alt="Rechner Logo"
       />
 
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Mitarbeiter</span>
-        </div>
-        <input
-          type="number"
-          min="1"
-          class="form-control"
-          v-model="employees"
-          @change="changeConsidered"
-          placeholder="Mitarbeiter"
-          required="required"
-        />
-      </div>
+      <Fields :fieldVals="fieldVals" />
+      <Result :result="fieldVals.result" />
 
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Auszubildene</span>
-        </div>
-        <input
-          type="number"
-          min="0"
-          class="form-control"
-          v-model="trainees"
-          @change="changeConsidered"
-          placeholder="Mitarbeiter"
-          required="required"
-        />
-      </div>
-
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Geringfügige Mitarbeiter</span>
-        </div>
-        <input
-          type="number"
-          min="0"
-          class="form-control"
-          v-model="minors"
-          @change="changeConsidered"
-          placeholder="Mitarbeiter"
-          required="required"
-        />
-      </div>
-
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Benachteiligte Mitarbeiter</span>
-        </div>
-        <input
-          type="number"
-          min="0"
-          class="form-control"
-          v-model="disadvantaged"
-          @change="changeConsidered"
-          placeholder="Mitarbeiter"
-          required="required"
-        />
-      </div>
-
-      <Ergebnis :result="result" />
       <Bottom />
     </div>
   </div>
@@ -75,50 +17,27 @@
 
 <script>
 import Bottom from "./Bottom";
-import Ergebnis from "./Result";
+import Result from "./Result";
+import Fields from "@/components/Fields.vue";
 
 export default {
   name: "Quotenrechner",
   components: {
     Bottom,
-    Ergebnis
+    Result,
+    Fields
   },
   data() {
     return {
-      employees: 1,
-      trainees: 0,
-      minors: 0,
-      disadvantaged: 0,
-      considered: 0,
-      result: 0
+      fieldVals: {
+        employees: 1,
+        trainees: 0,
+        minors: 0,
+        disadvantaged: 0,
+        considered: 0,
+        result: 0
+      }
     };
-  },
-  methods: {
-    /**
-     * Rundet auf Zweikommastellen
-     */
-    round(number) {
-      return Number(number.toFixed(2));
-    },
-
-    /**
-     * Berechnet wieviele Mitarbeiter benachteiligt sind
-     */
-    calculate() {
-      this.result =
-        this.considered > 0 && this.disadvantaged > 0
-          ? this.round((this.disadvantaged / this.considered) * 100)
-          : 0;
-    },
-
-    /**
-     * Berücksichtigt werden alle Mitarbeiter abzüglich Azubis und geringfügige Mitarbeitern
-     */
-    changeConsidered() {
-      this.considered =
-        Number(this.employees) - (Number(this.trainees) + Number(this.minors));
-      this.calculate();
-    }
   }
 };
 </script>
@@ -167,9 +86,5 @@ body {
   height: auto;
   padding: 10px;
   font-size: 16px;
-}
-
-.input-group-prepend {
-  width: 60%;
 }
 </style>

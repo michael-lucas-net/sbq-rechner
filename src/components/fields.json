@@ -1,0 +1,22 @@
+[
+  {
+    "model": "employees",
+    "min": 1,
+    "name": "Mitarbeiter"
+  },
+  {
+    "model": "trainees",
+    "min": 0,
+    "name": "Auszubildene"
+  },
+  {
+    "model": "minors",
+    "min": 0,
+    "name": "Geringfügige Mitarbeiter"
+  },
+  {
+    "model": "disadvantaged",
+    "min": 0,
+    "name": "Benachteiligte Mitarbeiter"
+  }
+]
