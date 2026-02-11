@@ -5,7 +5,7 @@
         class="alert"
         v-bind:class="{
           'alert-success': result > 0,
-          'alert-secondary': result === 0
+          'alert-secondary': result === 0,
         }"
         role="alert"
       >

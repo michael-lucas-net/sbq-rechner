@@ -25,7 +25,7 @@ export default {
   components: {
     Bottom,
     Result,
-    Fields
+    Fields,
   },
   data() {
     return {
@@ -35,10 +35,10 @@ export default {
         minors: 0,
         disadvantaged: 0,
         considered: 0,
-        result: 0
-      }
+        result: 0,
+      },
     };
-  }
+  },
 };
 </script>
 

@@ -10,8 +10,8 @@ import QuotaCalculator from "./components/quotaCalculator.vue";
 export default {
   name: "app",
   components: {
-    QuotaCalculator: QuotaCalculator
-  }
+    QuotaCalculator: QuotaCalculator,
+  },
 };
 </script>
 

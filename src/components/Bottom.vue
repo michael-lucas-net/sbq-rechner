@@ -18,10 +18,10 @@
 <script>
 export default {
   computed: {
-    year: function() {
+    year: function () {
       return new Date().getFullYear();
-    }
-  }
+    },
+  },
 };
 </script>
 

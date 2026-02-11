@@ -25,7 +25,7 @@ export default {
   props: ["fieldVals"],
   data() {
     return {
-      fields: fields
+      fields: fields,
     };
   },
   methods: {
@@ -55,8 +55,8 @@ export default {
         Number(this.fieldVals.employees) -
         (Number(this.fieldVals.trainees) + Number(this.fieldVals.minors));
       this.calculate();
-    }
-  }
+    },
+  },
 };
 </script>
 
