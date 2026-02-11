@@ -43,7 +43,7 @@ export default {
       this.fieldVals.result =
         this.fieldVals.considered > 0 && this.fieldVals.disadvantaged > 0
           ? this.round(
-              (this.fieldVals.disadvantaged / this.fieldVals.considered) * 100
+              (this.fieldVals.disadvantaged / this.fieldVals.considered) * 100,
             )
           : 0;
     },
